@@ -1,0 +1,75 @@
+<div class="row">
+
+    <img src="../../content/images/Image2.png">
+    <div class="col-sm-4">
+        <img src="../../content/images/Course-Search1.png">
+
+    </div>
+    <div class="col-sm-8">
+        <h1 class="display-1"></h1>
+
+
+        <p class="lead"></p>
+
+        <div [ngSwitch]="account !== null">
+            <div class="alert alert-success" *ngSwitchCase="true">
+                <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }">Vous êtes connecté en tant que "{{ account.login }}".</span
+        >
+      </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false" style="background-color: rgb(215, 237, 241);">
+        <span style="color: black; ">Si vous voulez vous </span>
+                <a class="alert-link" (click)="login()" style="color: black;">connecter</a
+        >
+      </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false"  style="background-color: rgb(215, 237, 241);">
+        <span style="color: black; ">Vous n'avez pas encore de compte ?</span>&nbsp;
+        <a class="alert-link" routerLink="account/register" style="color: black; ">Créer un compte</a>
+            </div>
+        </div>
+
+
+
+        <ul>
+            <li>
+                <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">Page d'accueil de notre application</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://stackoverflow.com/tags/facebook/info"
+          target="_blank"
+          rel="noopener noreferrer"
+          
+          >Notre application est sur facebook !</a
+        >
+      </li>
+      <li>
+        <a
+          
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://stackoverflow.com/tags/facebook/info"
+          >Notre application est sur instagram !</a
+        >
+      </li>
+      <li>
+        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" 
+          >public chat room</a
+        >
+      </li>
+      <li>
+        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" 
+          >Suivez nous sur Twitter</a
+        >
+      </li>
+    </ul>
+
+    <p>
+      
+      
+    
+    </p>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+entity Formation {
+Identifiant String required,
+Description String required,
+Domaine String,
+Type Type,
+DateDebut LocalDate required,
+DateFin LocalDate required,
+LesHeuresDeLaFormation  String required,
+LePrix String,
+NomInstructeur String ,
+
+}
+
+entity Emplacement{
+Identifiant Integer required,
+Type String required,
+CentreDeFormation String ,
+WebSiteLink String,
+Adresse String
+}
+
+entity Inscription {
+Objet String required,
+DateValiditeDebut LocalDate required,
+DateValiditeFin LocalDate required
+
+}
+
+entity Subscriber {
+CIN String required,
+Nom String required ,
+Prenom String required,
+Age Integer,
+Statut String required
+}
+
+
+
+
+enum Type {
+EnLigne,
+Presentielle
+}
+
+
+
+relationship ManyToMany {
+Formation{Subscriber(CIN)} to Subscriber{Formation(Identifiant) required}
+}
+
+relationship OneToMany {
+Formation{Emplacament(Adresse) required} to Emplacement
+}
+
+relationship OneToMany {
+Formation to Inscription{Formation(identifiant) required}
+}
+
+relationship OneToMany {
+Inscription{Subscriber(CIN) required } to Subscriber
+}
+
+
+
+dto * with mapstruct
+service all with serviceImpl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// defining multiple OneToMany relationships with comments
+
+	/**
+	* A relationship
+	*/
+	
+	/**
+	* Another side of the same relationship
+	*/
+
+// defining multiple oneToOne relationships
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+
+
+// Set service options to all except few
+
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

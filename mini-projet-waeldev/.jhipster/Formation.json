@@ -1,0 +1,81 @@
+{
+  "applications": "*",
+  "changelogDate": "20230402235627",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "formation",
+  "fields": [
+    {
+      "fieldName": "identifiant",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "domaine",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "Type",
+      "fieldValues": "EnLigne,Presentielle"
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lesHeuresDeLaFormation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lePrix",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomInstructeur",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Formation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "adresse",
+      "otherEntityName": "emplacement",
+      "otherEntityRelationshipName": "formation",
+      "relationshipName": "emplacament",
+      "relationshipType": "one-to-many",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "inscription",
+      "otherEntityRelationshipName": "formation",
+      "relationshipName": "inscription",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "cIN",
+      "otherEntityName": "subscriber",
+      "otherEntityRelationshipName": "formation",
+      "ownerSide": true,
+      "relationshipName": "subscriber",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

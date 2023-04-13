@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20230402235628",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "emplacement",
+  "fields": [
+    {
+      "fieldName": "identifiant",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "centreDeFormation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "webSiteLink",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Emplacement",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "formation",
+      "otherEntityRelationshipName": "emplacament",
+      "relationshipName": "formation",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

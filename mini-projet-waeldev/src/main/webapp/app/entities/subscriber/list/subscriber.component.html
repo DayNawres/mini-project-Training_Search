@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="SubscriberHeading">
+    <span jhiTranslate="digiparcApp.subscriber.home.title">Subscribers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="digiparcApp.subscriber.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-subscriber"
+        [routerLink]="['/subscriber/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="digiparcApp.subscriber.home.createLabel"> Créer un nouveau Subscriber </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="subscribers?.length === 0">
+    <span jhiTranslate="digiparcApp.subscriber.home.notFound">Aucun Subscriber trouvé</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="subscribers && subscribers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="cIN"><span jhiTranslate="digiparcApp.subscriber.cIN">C IN</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nom"><span jhiTranslate="digiparcApp.subscriber.nom">Nom</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="prenom">
+            <span jhiTranslate="digiparcApp.subscriber.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="age"><span jhiTranslate="digiparcApp.subscriber.age">Age</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="statut">
+            <span jhiTranslate="digiparcApp.subscriber.statut">Statut</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="inscription.id">
+            <span jhiTranslate="digiparcApp.subscriber.inscription">Inscription</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subscriber of subscribers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/subscriber', subscriber.id, 'view']">{{ subscriber.id }}</a>
+          </td>
+          <td>{{ subscriber.cIN }}</td>
+          <td>{{ subscriber.nom }}</td>
+          <td>{{ subscriber.prenom }}</td>
+          <td>{{ subscriber.age }}</td>
+          <td>{{ subscriber.statut }}</td>
+          <td>
+            <div *ngIf="subscriber.inscription">
+              <a [routerLink]="['/inscription', subscriber.inscription.id, 'view']">{{ subscriber.inscription?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/subscriber', subscriber.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/subscriber', subscriber.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(subscriber)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "digiparcApp": {
+    "formation": {
+      "home": {
+        "title": "Formations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Formation",
+        "createOrEditLabel": "Créer ou éditer un Formation",
+        "notFound": "Aucun Formation trouvé"
+      },
+      "created": "Un nouveau Formation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Formation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Formation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Formation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Formation"
+      },
+      "id": "ID",
+      "identifiant": "Identifiant",
+      "description": "Description",
+      "domaine": "Domaine",
+      "type": "Type",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "lesHeuresDeLaFormation": "Les Heures De La Formation",
+      "lePrix": "Le Prix",
+      "nomInstructeur": "Nom Instructeur",
+      "emplacament": "Emplacament",
+      "inscription": "Inscription",
+      "subscriber": "Subscriber"
+    }
+  }
+}

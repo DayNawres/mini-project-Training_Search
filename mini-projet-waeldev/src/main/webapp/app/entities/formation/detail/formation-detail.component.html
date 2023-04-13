@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="formation">
+      <h2 data-cy="formationDetailsHeading"><span jhiTranslate="digiparcApp.formation.detail.title">Formation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ formation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.identifiant">Identifiant</span></dt>
+        <dd>
+          <span>{{ formation.identifiant }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.description">Description</span></dt>
+        <dd>
+          <span>{{ formation.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.domaine">Domaine</span></dt>
+        <dd>
+          <span>{{ formation.domaine }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'digiparcApp.Type.' + formation.type }}">{{ formation.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ formation.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ formation.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.lesHeuresDeLaFormation">Les Heures De La Formation</span></dt>
+        <dd>
+          <span>{{ formation.lesHeuresDeLaFormation }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.lePrix">Le Prix</span></dt>
+        <dd>
+          <span>{{ formation.lePrix }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.nomInstructeur">Nom Instructeur</span></dt>
+        <dd>
+          <span>{{ formation.nomInstructeur }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.formation.subscriber">Subscriber</span></dt>
+        <dd>
+          <span *ngFor="let subscriber of formation.subscribers; let last = last">
+            <a [routerLink]="['/subscriber', subscriber.id, 'view']">{{ subscriber.cIN }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/formation', formation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

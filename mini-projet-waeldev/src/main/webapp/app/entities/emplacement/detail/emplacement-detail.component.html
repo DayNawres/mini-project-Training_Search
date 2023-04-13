@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="emplacement">
+      <h2 data-cy="emplacementDetailsHeading"><span jhiTranslate="digiparcApp.emplacement.detail.title">Emplacement</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ emplacement.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.emplacement.identifiant">Identifiant</span></dt>
+        <dd>
+          <span>{{ emplacement.identifiant }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.emplacement.type">Type</span></dt>
+        <dd>
+          <span>{{ emplacement.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.emplacement.centreDeFormation">Centre De Formation</span></dt>
+        <dd>
+          <span>{{ emplacement.centreDeFormation }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.emplacement.webSiteLink">Web Site Link</span></dt>
+        <dd>
+          <span>{{ emplacement.webSiteLink }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.emplacement.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ emplacement.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.emplacement.formation">Formation</span></dt>
+        <dd>
+          <div *ngIf="emplacement.formation">
+            <a [routerLink]="['/formation', emplacement.formation.id, 'view']">{{ emplacement.formation?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/emplacement', emplacement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

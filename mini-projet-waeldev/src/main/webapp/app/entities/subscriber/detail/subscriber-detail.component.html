@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="subscriber">
+      <h2 data-cy="subscriberDetailsHeading"><span jhiTranslate="digiparcApp.subscriber.detail.title">Subscriber</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ subscriber.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.subscriber.cIN">C IN</span></dt>
+        <dd>
+          <span>{{ subscriber.cIN }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.subscriber.nom">Nom</span></dt>
+        <dd>
+          <span>{{ subscriber.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.subscriber.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ subscriber.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.subscriber.age">Age</span></dt>
+        <dd>
+          <span>{{ subscriber.age }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.subscriber.statut">Statut</span></dt>
+        <dd>
+          <span>{{ subscriber.statut }}</span>
+        </dd>
+        <dt><span jhiTranslate="digiparcApp.subscriber.inscription">Inscription</span></dt>
+        <dd>
+          <div *ngIf="subscriber.inscription">
+            <a [routerLink]="['/inscription', subscriber.inscription.id, 'view']">{{ subscriber.inscription?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/subscriber', subscriber.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

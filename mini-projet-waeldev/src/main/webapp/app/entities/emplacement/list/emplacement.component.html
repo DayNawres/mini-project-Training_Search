@@ -1,0 +1,102 @@
+<div style="background-color: rgb(245, 245, 247);">
+    <div class="row">
+        <img src="../../content/images/empl.png">
+
+    </div>
+
+    <h2 id="page-heading" data-cy="EmplacementHeading">
+        <span jhiTranslate="digiparcApp.emplacement.home.title">Emplacements</span>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="digiparcApp.emplacement.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+            <button id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-emplacement" [routerLink]="['/emplacement/new']">
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="digiparcApp.emplacement.home.createLabel"> Créer un nouveau Emplacement </span>
+      </button>
+        </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="emplacements?.length === 0">
+        <span jhiTranslate="digiparcApp.emplacement.home.notFound">Aucun Emplacement trouvé</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="emplacements && emplacements.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr style="border-top: 1px solid black; border-left: 1px solid black;border-right: 1px solid black; " jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+                    <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="identifiant">
+                        <span jhiTranslate="digiparcApp.emplacement.identifiant">Identifiant</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="type">
+                        <span jhiTranslate="digiparcApp.emplacement.type">Type</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="centreDeFormation">
+                        <span jhiTranslate="digiparcApp.emplacement.centreDeFormation">Centre De Formation</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="webSiteLink">
+                        <span jhiTranslate="digiparcApp.emplacement.webSiteLink">Web Site Link</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="adresse">
+                        <span jhiTranslate="digiparcApp.emplacement.adresse">Adresse</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="formation.id">
+                        <span jhiTranslate="digiparcApp.emplacement.formation">Formation</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-top: 1px solid black; border-left: 1px solid black;border-right: 1px solid black; " *ngFor="let emplacement of emplacements; trackBy: trackId" data-cy="entityTable">
+                    <td>
+                        <a [routerLink]="['/emplacement', emplacement.id, 'view']">{{ emplacement.id }}</a>
+                    </td>
+                    <td>{{ emplacement.identifiant }}</td>
+                    <td>{{ emplacement.type }}</td>
+                    <td>{{ emplacement.centreDeFormation }}</td>
+                    <td>{{ emplacement.webSiteLink }}</td>
+                    <td>{{ emplacement.adresse }}</td>
+                    <td>
+                        <div *ngIf="emplacement.formation">
+                            <a [routerLink]="['/formation', emplacement.formation.id, 'view']">{{ emplacement.formation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <button type="submit" [routerLink]="['/emplacement', emplacement.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+                            <button type="submit" [routerLink]="['/emplacement', emplacement.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+                            <button type="submit" (click)="delete(emplacement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

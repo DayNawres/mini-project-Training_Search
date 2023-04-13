@@ -1,0 +1,144 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-inscription-heading"
+        data-cy="InscriptionCreateUpdateHeading"
+        jhiTranslate="digiparcApp.inscription.home.createOrEditLabel"
+      >
+        Créer ou éditer un Inscription
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="digiparcApp.inscription.objet" for="field_objet">Objet</label>
+          <input type="text" class="form-control" name="objet" id="field_objet" data-cy="objet" formControlName="objet" />
+          <div *ngIf="editForm.get('objet')!.invalid && (editForm.get('objet')!.dirty || editForm.get('objet')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('objet')?.errors?.required" jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="digiparcApp.inscription.dateValiditeDebut" for="field_dateValiditeDebut"
+            >Date Validite Debut</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateValiditeDebut"
+              data-cy="dateValiditeDebut"
+              type="text"
+              class="form-control"
+              name="dateValiditeDebut"
+              ngbDatepicker
+              #dateValiditeDebutDp="ngbDatepicker"
+              formControlName="dateValiditeDebut"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateValiditeDebutDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('dateValiditeDebut')!.invalid &&
+              (editForm.get('dateValiditeDebut')!.dirty || editForm.get('dateValiditeDebut')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateValiditeDebut')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="digiparcApp.inscription.dateValiditeFin" for="field_dateValiditeFin"
+            >Date Validite Fin</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateValiditeFin"
+              data-cy="dateValiditeFin"
+              type="text"
+              class="form-control"
+              name="dateValiditeFin"
+              ngbDatepicker
+              #dateValiditeFinDp="ngbDatepicker"
+              formControlName="dateValiditeFin"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateValiditeFinDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('dateValiditeFin')!.invalid &&
+              (editForm.get('dateValiditeFin')!.dirty || editForm.get('dateValiditeFin')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateValiditeFin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="digiparcApp.inscription.formation" for="field_formation">Formation</label>
+          <select
+            class="form-control"
+            id="field_formation"
+            data-cy="formation"
+            name="formation"
+            formControlName="formation"
+            [compareWith]="compareFormation"
+          >
+            <option *ngIf="editForm.get(['formation'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="formationOption" *ngFor="let formationOption of formationsSharedCollection">
+              {{ formationOption.identifiant }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['formation'])!.invalid && (editForm.get(['formation'])!.dirty || editForm.get(['formation'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['formation'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            Ce champ est obligatoire.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

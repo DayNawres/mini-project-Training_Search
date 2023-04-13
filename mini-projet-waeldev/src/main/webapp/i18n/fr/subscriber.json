@@ -1,0 +1,30 @@
+{
+  "digiparcApp": {
+    "subscriber": {
+      "home": {
+        "title": "Subscribers",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Subscriber",
+        "createOrEditLabel": "Créer ou éditer un Subscriber",
+        "notFound": "Aucun Subscriber trouvé"
+      },
+      "created": "Un nouveau Subscriber a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Subscriber avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Subscriber avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Subscriber {{ id }} ?"
+      },
+      "detail": {
+        "title": "Subscriber"
+      },
+      "id": "ID",
+      "cIN": "C IN",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "age": "Age",
+      "statut": "Statut",
+      "inscription": "Inscription",
+      "formation": "Formation"
+    }
+  }
+}

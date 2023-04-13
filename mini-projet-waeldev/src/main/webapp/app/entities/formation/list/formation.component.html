@@ -1,0 +1,121 @@
+<div style="background-color: rgb(245, 245, 247);">
+    <div class="row">
+        <img src="../../content/images/for2.jpg">
+
+    </div>
+    <h2 id="page-heading" data-cy="FormationHeading">
+        <span jhiTranslate="digiparcApp.formation.home.title">Formations</span>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="digiparcApp.formation.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+            <button id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-formation" [routerLink]="['/formation/new']">
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="digiparcApp.formation.home.createLabel"> Créer un nouveau Formation </span>
+      </button>
+        </div>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="formations?.length === 0">
+        <span jhiTranslate="digiparcApp.formation.home.notFound">Aucun Formation trouvé</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="formations && formations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr style="border-top: 1px solid black; border-left: 1px solid black;border-right: 1px solid black; " jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+                    <th style="border-top: 1px solid black; border-left: 1px solid black;" scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th style="border-top: 1px solid black;" scope="col" jhiSortBy="identifiant">
+                        <span jhiTranslate="digiparcApp.formation.identifiant">Identifiant</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th style="border-top: 1px solid black;" scope="col" jhiSortBy="description">
+                        <span jhiTranslate="digiparcApp.formation.description">Description</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th style="border-top: 1px solid black;" scope="col" jhiSortBy="domaine">
+                        <span jhiTranslate="digiparcApp.formation.domaine">Domaine</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="type"><span jhiTranslate="digiparcApp.formation.type">Type</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="dateDebut">
+                        <span jhiTranslate="digiparcApp.formation.dateDebut">Date Debut</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="dateFin">
+                        <span jhiTranslate="digiparcApp.formation.dateFin">Date Fin</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="lesHeuresDeLaFormation">
+                        <span jhiTranslate="digiparcApp.formation.lesHeuresDeLaFormation">Les Heures De La Formation</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="lePrix">
+                        <span jhiTranslate="digiparcApp.formation.lePrix">Le Prix</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="nomInstructeur">
+                        <span jhiTranslate="digiparcApp.formation.nomInstructeur">Nom Instructeur</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th style="border-top: 1px solid black;" scope="col" jhiSortBy="subscriber.cIN">
+                        <span jhiTranslate="digiparcApp.formation.subscriber">Subscriber</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-top: 1px solid black;border-left: 1px solid black; border-right: 1px solid black;" *ngFor="let formation of formations; trackBy: trackId" data-cy="entityTable">
+                    <td style="border-top: 1px solid black;">
+                        <a [routerLink]="['/formation', formation.id, 'view']">{{ formation.id }}</a>
+                    </td>
+                    <td style="border-top: 1px solid black;">{{ formation.identifiant }}</td>
+                    <td style="border-top: 1px solid black;">{{ formation.description }}</td>
+                    <td>{{ formation.domaine }}</td>
+                    <td jhiTranslate="{{ 'digiparcApp.Type.' + formation.type }}">{{ formation.type }}</td>
+                    <td>{{ formation.dateDebut | formatMediumDate }}</td>
+                    <td>{{ formation.dateFin | formatMediumDate }}</td>
+                    <td>{{ formation.lesHeuresDeLaFormation }}</td>
+                    <td>{{ formation.lePrix }}</td>
+                    <td>{{ formation.nomInstructeur }}</td>
+                    <td>
+                        <span *ngFor="let subscriber of formation.subscribers; let last = last">
+              <a class="form-control-static" [routerLink]="['/subscriber', subscriber.id, 'view']">{{ subscriber.cIN }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+                    </td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <button type="submit" [routerLink]="['/formation', formation.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+                            <button type="submit" [routerLink]="['/formation', formation.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+                            <button type="submit" (click)="delete(formation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

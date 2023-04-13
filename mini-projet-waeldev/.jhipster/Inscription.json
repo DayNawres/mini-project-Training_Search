@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20230402235629",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "inscription",
+  "fields": [
+    {
+      "fieldName": "objet",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateValiditeDebut",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateValiditeFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Inscription",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "cIN",
+      "otherEntityName": "subscriber",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "subscriber",
+      "relationshipType": "one-to-many",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "identifiant",
+      "otherEntityName": "formation",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "formation",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,29 @@
+{
+  "digiparcApp": {
+    "emplacement": {
+      "home": {
+        "title": "Emplacements",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Emplacement",
+        "createOrEditLabel": "Créer ou éditer un Emplacement",
+        "notFound": "Aucun Emplacement trouvé"
+      },
+      "created": "Un nouveau Emplacement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Emplacement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Emplacement avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Emplacement {{ id }} ?"
+      },
+      "detail": {
+        "title": "Emplacement"
+      },
+      "id": "ID",
+      "identifiant": "Identifiant",
+      "type": "Type",
+      "centreDeFormation": "Centre De Formation",
+      "webSiteLink": "Web Site Link",
+      "adresse": "Adresse",
+      "formation": "Formation"
+    }
+  }
+}
