@@ -24,7 +24,6 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'digiparcApp.subscriber.home.title' },
         loadChildren: () => import('./subscriber/subscriber.module').then(m => m.SubscriberModule),
       },
-      /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
 })

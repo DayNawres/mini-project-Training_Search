@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div *ngFor="let formation of formation" class="card mb-3">
+                <div class="card-header">{{ formation.title }}</div>
+                <div class="card-body">
+                    <p class="card-text">{{ formation.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
