@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 
-import { LoginComponent } from './consulter.component';
+import { ConsulterComponent } from 'app/consulter/consulter.component';
 
-export const LOGIN_ROUTE: Route = {
+export const CONSULTER_ROUTE: Route = {
   path: '',
-  component: LoginComponent,
+  component: ConsulterComponent,
   data: {
     pageTitle: 'login.title',
   },

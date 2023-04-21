@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 import { SharedModule } from 'app/shared/shared.module';
-import { FormationComponent } from 'app/entities/formation/list/formation.component';
-import { FormationDetailComponent } from 'app/entities/formation/detail/formation-detail.component';
-import { FormationUpdateComponent } from 'app/entities/formation//update/formation-update.component';
-import { FormationRoutingModule } from 'app/entities/formation/route/formation-routing.module';
+import { CONSULTER_ROUTE } from 'app/consulter/consulter.route';
+import { ConsulterComponent } from 'app/consulter/consulter.component';
 
 @NgModule({
-  imports: [SharedModule, FormationRoutingModule],
-  declarations: [FormationComponent, FormationDetailComponent, FormationUpdateComponent],
+  imports: [SharedModule, RouterModule.forChild([CONSULTER_ROUTE])],
+  declarations: [ConsulterComponent],
 })
-export class FormationModule {}
+export class ConsulterModule {}

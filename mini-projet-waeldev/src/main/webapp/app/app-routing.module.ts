@@ -21,6 +21,10 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule),
         },
         {
+          path: 'consulter',
+          loadChildren: () => import('./consulter/consulter.module').then(m => m.ConsulterModule),
+        },
+        {
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
         },
@@ -28,14 +32,17 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           path: 'login',
           loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
         },
+        
         {
           path: '',
           loadChildren: () => import(`./entities/entity-routing.module`).then(m => m.EntityRoutingModule),
         },
+        
         {
-          path: 'consulter',
-          loadChildren: () => import('./consulter/consulter.module').then(m => m.FormationModule),
+          path: 'loginn',
+          loadChildren: () => import('./loginn/loginn.module').then(m => m.LoginModule),
         },
+        
         navbarRoute,
         ...errorRoute,
       ],

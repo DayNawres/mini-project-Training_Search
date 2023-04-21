@@ -8,7 +8,7 @@ import { FormationUpdateComponent } from '../update/formation-update.component';
 import { FormationRoutingResolveService } from './formation-routing-resolve.service';
 import { ASC } from 'app/config/navigation.constants';
 
-const formationRoute: Routes = [
+export const formationRoute: Routes = [
   {
     path: '',
     component: FormationComponent,

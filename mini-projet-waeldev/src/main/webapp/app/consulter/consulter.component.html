@@ -1,12 +1,172 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div *ngFor="let formation of formation" class="card mb-3">
-                <div class="card-header">{{ formation.title }}</div>
-                <div class="card-body">
-                    <p class="card-text">{{ formation.description }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formations</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #e7e4e4;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .formation {
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 10px;
+      max-width: 300px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .formation img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .formation h2 {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .formation p {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .formation a {
+      display: inline-block;
+      background-color: #3a3a3a;
+      color: #fff;
+      font-size: 1rem;
+      margin-top: 10px;
+      padding: 5px 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .formation a:hover {
+      background-color: #555;
+    }
+
+    footer {
+      background-color: #f7f7f7;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    footer a {
+      color: #3a3a3a;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    footer a:hover {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    
+    <img src="../../content/images/programmation (2).png" alt="Image" style="vertical-align: middle; margin-right: 10px;">
+  <span style="vertical-align: middle; font-size: larger; font-weight:bolder;font-size:60px ;">Formations disponibles</span>
+  </header>
+  
+  <main>
+    <section class="formation">
+      <img src="../../content/images/spring.png" alt="Formation 1">
+      <h2>Formation en SpringBoot</h2>
+      <p>Description de la formation 1</p>
+      <a href="#">En savoir plus</a>
+    </section>
+    
+    <section class="formation">
+      <img src="../../content/images/vuejs - Copy.png" alt="Formation 2">
+      <h2>Formation en VueJS</h2>
+      <p>Description de la formation 2</p>
+      <a href="#">En savoir plus</a>
+    </section>
+    
+    <section class="formation">
+      <img src="../../content/images/react.png" alt="Formation 3">
+      <h2>Formation en ReactJs</h2>
+      <p>Description de la formation 3</p>
+      <a href="#">En savoir plus</a>
+    </section>
+    
+  </main>
+  <main>
+    <section class="formation">
+        <img src="../../content/images/html.png" alt="Formation 1">
+        <h2>Formation en HTML</h2>
+        <p>Description de la formation 1</p>
+        <a href="#">En savoir plus</a>
+      </section>
+      
+      <section class="formation">
+        <img src="../../content/images/php (1).jpg" alt="Formation 2">
+        <h2>Formation en PHP</h2>
+        <p>Description de la formation </p>
+        <a href="#">En savoir plus</a>
+      </section>
+      
+      <section class="formation">
+        <img src="../../content/images/css.png" alt="Formation 3">
+        <h2>Formation en CSS</h2>
+        <p>Description de la formation 3</p>
+        <a href="#">En savoir plus</a>
+      </section>
+      
+  </main>
+  <main>
+    <section class="formation">
+        <img src="../../content/images/symfony.png" alt="Formation 1">
+        <h2>Titre de la formation 1</h2>
+        <p>Description de la formation 1</p>
+        <a href="#">En savoir plus</a>
+      </section>
+      
+      <section class="formation">
+        <img src="../../content/images/Python1.png" alt="Formation 2">
+        <h2>Titre de la formation 2</h2>
+        <p>Description de la formation 2</p>
+        <a href="#">En savoir plus</a>
+      </section>
+      
+      <section class="formation">
+        <img src="../../content/images/java.png" alt="Formation 3">
+        <h2>Titre de la formation 3</h2>
+        <p>Description de la formation 3</p>
+        <a href="#">En savoir plus</a>
+      </section>
+      
+  </main>
+  <footer>
+    <p>Copyright © 
+      <a href="https://example.com">example.com</a> 2023. 
+      Tous droits réservés.</p>
+  </footer>
+  
+</body>
+</html>

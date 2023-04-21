@@ -9,5 +9,6 @@ import { FormationRoutingModule } from './route/formation-routing.module';
 @NgModule({
   imports: [SharedModule, FormationRoutingModule],
   declarations: [FormationComponent, FormationDetailComponent, FormationUpdateComponent, FormationDeleteDialogComponent],
+
 })
 export class FormationModule {}

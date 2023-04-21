@@ -73,6 +73,10 @@ export class FormationService {
   getFormationIdentifier(formation: Pick<IFormation, 'id'>): number {
     return formation.id;
   }
+  private formationsUrl = '/api/formations';
+
+  
+
 
   compareFormation(o1: Pick<IFormation, 'id'> | null, o2: Pick<IFormation, 'id'> | null): boolean {
     return o1 && o2 ? this.getFormationIdentifier(o1) === this.getFormationIdentifier(o2) : o1 === o2;
