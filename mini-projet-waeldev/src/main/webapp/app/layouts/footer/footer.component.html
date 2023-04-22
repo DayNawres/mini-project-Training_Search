@@ -1,3 +1,115 @@
-<div class="footer">
-  <p jhiTranslate="footer">Ceci est votre pied de page</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Footer professionnel et beau en HTML/CSS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f1f1f1;
+      color: #666;
+      padding: 40px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      color: #666;
+      font-size: 24px;
+      margin: 0 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .social-icons a:hover {
+      color: #3b5998;
+      transform: scale(1.2);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #666;
+      font-size: 16px;
+      margin: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .footer-links a:hover {
+      color: #3b5998;
+    }
+
+    /* Responsive */
+    @media only screen and (max-width: 768px) {
+      .social-icons {
+        margin-bottom: 30px;
+      }
+
+      .footer-links {
+        justify-content: space-between;
+      }
+    }
+
+    @media only screen and (max-width: 576px) {
+      h3 {
+        font-size: 20px;
+      }
+
+      .social-icons a {
+        font-size: 20px;
+      }
+
+      .footer-links a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <footer>
+    <div class="container">
+      <h3>Restez en contact avec nous</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Services</a>
+        <a href="#">Blog</a>
+        <a href="#">Contactez-nous</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
